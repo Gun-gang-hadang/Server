@@ -49,7 +49,7 @@ public class MySugarApiControllerTest {
                 .state(state)
                 .build();
 
-        String url = "http://localhost:" + port + "/api/v1/mysugar";
+        String url = "http://localhost:" + port + "/api/v1/mysugar/save";
 
         // when
         ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, mySugarSaveDto, Long.class);
