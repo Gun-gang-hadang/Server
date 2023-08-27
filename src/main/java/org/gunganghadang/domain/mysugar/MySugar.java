@@ -27,7 +27,8 @@ public class MySugar {
     private String state;
 
     @Builder
-    public MySugar(String date, String time, int sugarLevel, String state) {
+    public MySugar(Long id, String date, String time, int sugarLevel, String state) {
+        this.id = id;
         this.date = date;
         this.time = time;
         this.sugarLevel = sugarLevel;
