@@ -1,4 +1,4 @@
-package org.gunganghadang.domain.mysugars;
+package org.gunganghadang.domain.mysugar;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class MySugars {
+public class MySugar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,7 +27,7 @@ public class MySugars {
     private String state;
 
     @Builder
-    public MySugars(String date, String time, int sugarLevel, String state) {
+    public MySugar(String date, String time, int sugarLevel, String state) {
         this.date = date;
         this.time = time;
         this.sugarLevel = sugarLevel;

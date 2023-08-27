@@ -1,7 +1,7 @@
-package org.gunganghadang.app.domain.mysugars;
+package org.gunganghadang.app.domain.mysugar;
 
-import org.gunganghadang.domain.mysugars.MySugars;
-import org.gunganghadang.domain.mysugars.MySugarsRepository;
+import org.gunganghadang.domain.mysugar.MySugar;
+import org.gunganghadang.domain.mysugar.MySugarRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,13 +15,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class MySugarsRepositoryTest {
+public class MySugarRepositoryTest {
     @Autowired
-    MySugarsRepository mySugarsRepository;
+    MySugarRepository mySugarRepository;
 
     @AfterEach
     public void cleanup() {
-        mySugarsRepository.deleteAll();
+        mySugarRepository.deleteAll();
     }
 
     @Test
@@ -32,7 +32,7 @@ public class MySugarsRepositoryTest {
         int sugarLevel = 100;
         String state = "정상";
 
-        mySugarsRepository.save(MySugars.builder()
+        mySugarRepository.save(MySugar.builder()
                 .date(date)
                 .time(time)
                 .sugarLevel(sugarLevel)
@@ -40,13 +40,13 @@ public class MySugarsRepositoryTest {
                 .build());
 
         // when
-        List<MySugars> mySugarsList = mySugarsRepository.findAll();
+        List<MySugar> mySugarList = mySugarRepository.findAll();
 
         // then
-        MySugars mySugars = mySugarsList.get(0);
-        assertThat(mySugars.getDate()).isEqualTo(date);
-        assertThat(mySugars.getTime()).isEqualTo(time);
-        assertThat(mySugars.getSugarLevel()).isEqualTo(sugarLevel);
-        assertThat(mySugars.getState()).isEqualTo(state);
+        MySugar mySugar = mySugarList.get(0);
+        assertThat(mySugar.getDate()).isEqualTo(date);
+        assertThat(mySugar.getTime()).isEqualTo(time);
+        assertThat(mySugar.getSugarLevel()).isEqualTo(sugarLevel);
+        assertThat(mySugar.getState()).isEqualTo(state);
     }
 }
