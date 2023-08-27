@@ -1,8 +1,8 @@
 package org.gunganghadang.app.controller;
 
-import org.gunganghadang.app.dto.MySugarsSaveDto;
-import org.gunganghadang.domain.mysugars.MySugars;
-import org.gunganghadang.domain.mysugars.MySugarsRepository;
+import org.gunganghadang.app.dto.MySugarSaveDto;
+import org.gunganghadang.domain.mysugar.MySugar;
+import org.gunganghadang.domain.mysugar.MySugarRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class MySugarsApiControllerTest {
+public class MySugarApiControllerTest {
     @LocalServerPort
     private int port;
 
@@ -28,11 +28,11 @@ public class MySugarsApiControllerTest {
     private TestRestTemplate restTemplate;
 
     @Autowired
-    private MySugarsRepository mySugarsRepository;
+    private MySugarRepository mySugarRepository;
 
     @AfterEach
     public void tearDown() throws Exception {
-        mySugarsRepository.deleteAll();
+        mySugarRepository.deleteAll();
     }
 
     @Test
@@ -42,23 +42,23 @@ public class MySugarsApiControllerTest {
         String time = "아침식사 전";
         int sugarLevel = 100;
         String state = "정상";
-        MySugarsSaveDto mySugarsSaveDto = MySugarsSaveDto.builder()
+        MySugarSaveDto mySugarSaveDto = MySugarSaveDto.builder()
                 .date(date)
                 .time(time)
                 .sugarLevel(sugarLevel)
                 .state(state)
                 .build();
 
-        String url = "http://localhost:" + port + "/api/v1/writings";
+        String url = "http://localhost:" + port + "/api/v1/mysugar";
 
         // when
-        ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, mySugarsSaveDto, Long.class);
+        ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, mySugarSaveDto, Long.class);
 
         // then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
 
-        List<MySugars> all = mySugarsRepository.findAll();
+        List<MySugar> all = mySugarRepository.findAll();
         assertThat(all.get(0).getDate()).isEqualTo(date);
         assertThat(all.get(0).getTime()).isEqualTo(time);
         assertThat(all.get(0).getSugarLevel()).isEqualTo(sugarLevel);
