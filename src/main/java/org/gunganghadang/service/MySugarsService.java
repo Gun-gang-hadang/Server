@@ -9,6 +9,7 @@ import org.gunganghadang.domain.mysugar.MySugarRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,7 +20,7 @@ public class MySugarsService {
 
     @Transactional
     public Long save(MySugarSaveDto mySugarSaveDto) {
-        return mySugarRepository.save(mySugarSaveDto.toEntity()).getId();
+        return mySugarRepository.save(mySugarSaveDto.toEntity()).getPost_id();
     }
 
     public MySugarDetailsDto findById (Long id) {
