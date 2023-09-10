@@ -25,10 +25,10 @@ public class MySugarRepositoryTest {
     }
 
     @Test
-    public void 게시글저장_불러오기() {
+    public void 내혈당_조회() {
         // given
-        String date = "테스트 날짜";
-        String time = "테스트 입력 시기";
+        String date = "2023년 08월 20일";
+        String time = "공복";
         int sugarLevel = 100;
         String state = "정상";
 

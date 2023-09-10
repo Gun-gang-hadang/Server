@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class MySugarApiControllerTest {
+public class MySugarControllerTest {
     @LocalServerPort
     private int port;
 
@@ -36,7 +36,7 @@ public class MySugarApiControllerTest {
     }
 
     @Test
-    public void MySugar_등록() throws Exception {
+    public void 내혈당_등록() throws Exception {
         // given
         String date = "2023년 08월 10일";
         String time = "아침식사 전";

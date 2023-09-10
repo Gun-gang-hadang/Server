@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class MySugar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long post_id;
 
     @Column(nullable = false)
     private String date;
@@ -27,8 +27,8 @@ public class MySugar {
     private String state;
 
     @Builder
-    public MySugar(Long id, String date, String time, int sugarLevel, String state) {
-        this.id = id;
+    public MySugar(Long post_id, String date, String time, int sugarLevel, String state) {
+        this.post_id = post_id;
         this.date = date;
         this.time = time;
         this.sugarLevel = sugarLevel;
