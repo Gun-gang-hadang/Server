@@ -26,7 +26,7 @@ public class DietAnalysisController {
         return foodList;
     }
 
-    @PostMapping("api/v1/analyze/nutrient")
+    @GetMapping("/api/v1/analyze/nutrient")
     public List<FoodNutrient> sendFoodNutrients() {
         return dietAnalysisService.getFoodNutrient(foodList);
     }
