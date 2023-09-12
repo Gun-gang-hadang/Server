@@ -8,6 +8,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface MySugarRepository extends JpaRepository<MySugar, Long> {
-    @Query("SELECT s FROM MySugar s ORDER BY s.date DESC")
+    @Query("SELECT s FROM MySugar s ORDER BY s.date DESC, s.post_id DESC")
     List<MySugar> findAllByOrderByDateDESC();
 }
