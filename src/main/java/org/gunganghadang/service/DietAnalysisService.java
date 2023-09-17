@@ -1,7 +1,7 @@
 package org.gunganghadang.service;
 
 import lombok.RequiredArgsConstructor;
-import org.gunganghadang.app.dto.DietAnalysisMLResponseDto;
+import org.gunganghadang.app.ml.DietAnalysisMLResponseDto;
 import org.gunganghadang.app.ml.MLServerClient;
 import org.gunganghadang.domain.dietAnalysis.FoodNutrient;
 import org.gunganghadang.domain.dietAnalysis.FoodNutrientRepository;
