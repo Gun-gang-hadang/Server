@@ -42,6 +42,8 @@ public class MySugarControllerTest {
         String time = "아침식사 전";
         int sugarLevel = 100;
         String state = "정상";
+        Long login_id = 1234567263L;
+
         MySugarSaveDto mySugarSaveDto = MySugarSaveDto.builder()
                 .date(date)
                 .time(time)

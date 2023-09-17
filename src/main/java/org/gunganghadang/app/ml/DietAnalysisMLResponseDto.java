@@ -1,4 +1,4 @@
-package org.gunganghadang.app.dto;
+package org.gunganghadang.app.ml;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

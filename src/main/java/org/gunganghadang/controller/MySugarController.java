@@ -1,6 +1,7 @@
 package org.gunganghadang.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.gunganghadang.app.dto.MySugarDetailsDto;
 import org.gunganghadang.app.dto.MySugarListDto;
 import org.gunganghadang.app.dto.MySugarSaveDto;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RequiredArgsConstructor
 @RestController
 public class MySugarController {
