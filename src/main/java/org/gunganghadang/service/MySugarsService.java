@@ -2,7 +2,7 @@ package org.gunganghadang.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.gunganghadang.app.config.auth.SessionUserDto;
+import org.gunganghadang.app.config.auth.dto.KakaoSessionUserDto;
 import org.gunganghadang.app.dto.MySugarDetailsDto;
 import org.gunganghadang.app.dto.MySugarListDto;
 import org.gunganghadang.app.dto.MySugarSaveDto;
@@ -23,11 +23,11 @@ import java.util.stream.Collectors;
 public class MySugarsService {
     private final MySugarRepository mySugarRepository;
     private final UserRepository userRepository;
-    private final SessionUserDto sessionUserDto;
+    private final KakaoSessionUserDto kakaoSessionUserDto;
 
     @Transactional
     public Long save(MySugarSaveDto mySugarSaveDto) {
-        Long loginId = sessionUserDto.getLoginId();
+        Long loginId = kakaoSessionUserDto.getLoginId();
         Optional<User> userOptional = userRepository.findByLoginId(loginId);
 
         if (userOptional.isPresent()) {
@@ -46,7 +46,7 @@ public class MySugarsService {
 
     @Transactional(readOnly = true)
     public List<MySugarListDto> findAll() {
-        Long loginId = sessionUserDto.getLoginId();
+        Long loginId = kakaoSessionUserDto.getLoginId();
         List<MySugar> mySugars = mySugarRepository.findAllByUserLoginIdOrderByDateDesc(loginId);
         return mySugars.stream()
                 .map(MySugarListDto::new)
