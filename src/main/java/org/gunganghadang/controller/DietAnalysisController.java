@@ -23,6 +23,7 @@ public class DietAnalysisController {
     @PostMapping("/api/v1/analyze/image")
     public ArrayList<String> sendImageToMLAndGetFoodName(@RequestParam("image") MultipartFile image)  throws IOException {
         foodList = mlServerClient.analyzeDietImage(image).getFoodList();
+        log.info("food 정렬: {}", foodList);
         return foodList;
     }
 
