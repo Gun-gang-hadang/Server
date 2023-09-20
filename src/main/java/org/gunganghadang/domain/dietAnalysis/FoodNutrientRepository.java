@@ -7,6 +7,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface FoodNutrientRepository extends JpaRepository<FoodNutrient, Long> {
-    @Query("SELECT f FROM FoodNutrient f WHERE f.name IN :foodList")
+    @Query("SELECT f FROM FoodNutrient f WHERE f.name IN :foodList ORDER BY f.name")
     List<FoodNutrient> findByName(@Param("foodList") List<String> foodList);
 }
