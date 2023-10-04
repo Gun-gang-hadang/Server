@@ -4,13 +4,15 @@ import lombok.Builder;
 import lombok.Getter;
 import org.gunganghadang.domain.user.User;
 
+import java.math.BigInteger;
+
 @Getter
-public class KakaoUserDto {
-    private Long loginId;
+public class UserDto {
+    private String loginId;
     private String nickname;
 
     @Builder
-    public KakaoUserDto(Long loginId, String nickname) {
+    public UserDto(String loginId, String nickname) {
         this.loginId = loginId;
         this.nickname = nickname;
     }

@@ -5,14 +5,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 
 @Slf4j
 @Getter
 @Component
-public class KakaoSessionUserDto implements Serializable {
-    private Long loginId;
+public class SessionUserDto implements Serializable {
+    private String loginId;
 
-    public void setLoginId(Long loginId) {
+    public void setLoginId(String loginId) {
         this.loginId = loginId;
     }
 }
