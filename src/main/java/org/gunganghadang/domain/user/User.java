@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigInteger;
 
 @Getter
 @NoArgsConstructor
@@ -20,24 +21,24 @@ public class User implements Serializable{
     private String email;
 
     @Column(nullable = false)
-    private Long loginId;
+    private String loginId;
 
     @Column(nullable = false)
     private String nickname;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = true)
+    @Column
     private Role role;
 
     @Builder
-    public User(Long loginId, String email, String nickname, Role role) {
+    public User(String loginId, String email, String nickname, Role role) {
         this.loginId = loginId;
         this.email = email;
         this.nickname = nickname;
         this.role = role;
     }
 
-    public User update(Long loginId, String nickname) {
+    public User update(String loginId, String nickname) {
         this.loginId = loginId;
         this.nickname = nickname;
         return this;

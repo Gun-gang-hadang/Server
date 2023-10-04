@@ -2,7 +2,7 @@ package org.gunganghadang.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.gunganghadang.app.config.auth.dto.KakaoSessionUserDto;
+import org.gunganghadang.app.config.auth.dto.SessionUserDto;
 import org.gunganghadang.app.dto.MySugarDetailsDto;
 import org.gunganghadang.app.dto.MySugarListDto;
 import org.gunganghadang.app.dto.MySugarSaveDto;
@@ -13,6 +13,7 @@ import org.gunganghadang.domain.user.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,11 +24,11 @@ import java.util.stream.Collectors;
 public class MySugarsService {
     private final MySugarRepository mySugarRepository;
     private final UserRepository userRepository;
-    private final KakaoSessionUserDto kakaoSessionUserDto;
+    private final SessionUserDto sessionUserDto;
 
     @Transactional
     public Long save(MySugarSaveDto mySugarSaveDto) {
-        Long loginId = kakaoSessionUserDto.getLoginId();
+        String loginId = sessionUserDto.getLoginId();
         Optional<User> userOptional = userRepository.findByLoginId(loginId);
 
         if (userOptional.isPresent()) {
@@ -46,7 +47,7 @@ public class MySugarsService {
 
     @Transactional(readOnly = true)
     public List<MySugarListDto> findAll() {
-        Long loginId = kakaoSessionUserDto.getLoginId();
+        String loginId = sessionUserDto.getLoginId();
         List<MySugar> mySugars = mySugarRepository.findAllByUserLoginIdOrderByDateDesc(loginId);
         return mySugars.stream()
                 .map(MySugarListDto::new)
