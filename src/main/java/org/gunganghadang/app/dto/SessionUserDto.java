@@ -1,4 +1,4 @@
-package org.gunganghadang.app.config.auth.dto;
+package org.gunganghadang.app.dto;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;

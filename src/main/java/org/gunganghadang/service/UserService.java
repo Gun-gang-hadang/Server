@@ -2,7 +2,7 @@ package org.gunganghadang.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.gunganghadang.app.config.auth.dto.UserDto;
+import org.gunganghadang.app.dto.UserDto;
 import org.gunganghadang.domain.user.User;
 import org.gunganghadang.domain.user.UserRepository;
 import org.springframework.stereotype.Service;
