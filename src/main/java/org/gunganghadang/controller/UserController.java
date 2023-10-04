@@ -2,13 +2,11 @@ package org.gunganghadang.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.gunganghadang.app.config.auth.dto.SessionUserDto;
-import org.gunganghadang.app.config.auth.dto.UserDto;
+import org.gunganghadang.app.dto.SessionUserDto;
+import org.gunganghadang.app.dto.UserDto;
 import org.gunganghadang.domain.user.User;
 import org.gunganghadang.service.UserService;
 import org.springframework.web.bind.annotation.*;
-
-import java.math.BigInteger;
 
 @Slf4j
 @RequiredArgsConstructor
