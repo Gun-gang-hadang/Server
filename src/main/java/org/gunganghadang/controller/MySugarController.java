@@ -21,13 +21,18 @@ public class MySugarController {
         return mySugarsService.save(mySugarSaveDto);
     }
 
-    @GetMapping("/api/v1/mysugar/{id}")
-    public MySugarDetailsDto findById (@PathVariable Long id) {
-        return mySugarsService.findById(id);
-    }
+    // @GetMapping("/api/v1/mysugar/{id}")
+    // public MySugarDetailsDto findById (@PathVariable Long id) {
+    //     return mySugarsService.findById(id);
+    // }
 
     @GetMapping("/api/v1/mysugar")
     public List<MySugarListDto> mySugarList() {
         return mySugarsService.findAll();
+    }
+
+    @DeleteMapping("/api/v1/mysugar/{id}")
+    public void deletePost(@PathVariable Long id) {
+        this.mySugarsService.deleteMysugar(id);
     }
 }

@@ -52,4 +52,10 @@ public class MySugarsService {
                 .map(MySugarListDto::new)
                 .collect(Collectors.toList());
     }
+
+    @Transactional
+    public void deleteMysugar(Long id) {
+        MySugar mySugar = mySugarRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+        mySugarRepository.delete(mySugar);
+    }
 }
