@@ -2,6 +2,7 @@ package org.gunganghadang.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.gunganghadang.app.dto.SessionUserDto;
 import org.gunganghadang.app.dto.UserDto;
 import org.gunganghadang.domain.user.User;
 import org.gunganghadang.domain.user.UserRepository;
@@ -13,10 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final SessionUserDto sessionUserDto;
 
    @Transactional
    public User loadUser(UserDto userDto) {
        User user = saveOrUpdate(userDto);
+       sessionUserDto.setLoginId(user.getLoginId());
        log.info("SessionUserDto set in session: {}", user.getLoginId());
        return user;
    }

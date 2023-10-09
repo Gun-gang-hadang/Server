@@ -23,5 +23,4 @@ public class UserDto {
                 .nickname(nickname)
                 .build();
     }
-
 }
