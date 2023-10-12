@@ -8,6 +8,8 @@ import org.gunganghadang.domain.user.User;
 import org.gunganghadang.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @Slf4j
 @RequiredArgsConstructor
 @RestController
@@ -16,13 +18,12 @@ public class UserController {
     private final SessionUserDto sessionUserDto;
 
     @PostMapping("/api/v1/login/kakao")
-    public String loadKakaoUser(@RequestBody UserDto userDto) {
+    public String loadKakaoUser(@RequestBody UserDto userDto, HttpSession request) {
         try {
             User user = userService.loadUser(userDto);
             String loginId = user.getLoginId();
             log.info("로그인 후의 결과 값: {}", loginId);
 
-            sessionUserDto.setLoginId(loginId);
             log.info("sessionUser 확인: {}", sessionUserDto.getLoginId());
 
             return loginId;

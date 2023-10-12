@@ -32,6 +32,13 @@ public class MySugarsService {
 
         if (userOptional.isPresent()) {
             User user = userOptional.get();
+            String date = mySugarSaveDto.getDate();
+            String time = mySugarSaveDto.getTime();
+
+            if (mySugarRepository.existsMySugarByUserAndDateAndTime(user, date, time)) {
+                log.info("중복된 글이 있습니다.");
+                return -1L;
+            }
             return mySugarRepository.save(mySugarSaveDto.toEntity(user)).getPost_id();
         }
         else {
